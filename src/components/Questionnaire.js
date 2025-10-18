@@ -90,26 +90,27 @@ const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireC
                   required
                 >
                   <option value="">Select type</option>
-                  <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
+                  <option value="cars & minivans">Cars & Minivans</option>
+                  <option value="crossovers & suv">Crossovers & SUV</option>
                   <option value="truck">Truck</option>
-                  <option value="hybrid">Hybrid/Electric</option>
+                  <option value="electrified">Electrified</option>
+                  <option value="performance">Performance</option>
+                  <option value="no preference">No Preference</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Primary Usage</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Financing Preference</label>
                 <select
-                  value={questionnaireData.usage}
-                  onChange={(e) => handleQuestionnaireChange('usage', e.target.value)}
+                  value={questionnaireData.financingPreference}
+                  onChange={(e) => handleQuestionnaireChange('financingPreference', e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-red-600 focus:outline-none transition bg-white"
                   required
                 >
-                  <option value="">Select usage</option>
-                  <option value="commute">Daily Commute</option>
-                  <option value="family">Family Transportation</option>
-                  <option value="business">Business Use</option>
-                  <option value="recreation">Recreation & Travel</option>
+                  <option value="">Select preference</option>
+                  <option value="lease">Lease</option>
+                  <option value="finance">Finance</option>
+                  <option value="no preference">No Preference</option>
                 </select>
               </div>
             </div>
