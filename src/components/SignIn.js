@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Car, User, Lock, AlertCircle } from 'lucide-react';
+import { Car, User, Lock, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import logo from '../utils/toyota_logo.png';
 
 const SignIn = ({ user, setUser, handleSignIn, handleLogout }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,16 +76,25 @@ const SignIn = ({ user, setUser, handleSignIn, handleLogout }) => {
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   value={user.password}
                   onChange={handlePasswordChange}
-                  className={`w-full pl-10 pr-4 py-3 border-2 rounded-lg focus:outline-none transition ${
+                  className={`w-full pl-10 pr-12 py-3 border-2 rounded-lg focus:outline-none transition ${
                     passwordError ? 'border-red-500 focus:border-red-600' : 'border-gray-200 focus:border-red-600'
                   }`}
                   placeholder="••••••••"
                   required
                   minLength={isSignUp ? 8 : undefined}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(prev => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  title={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
               </div>
               {passwordError && (
                 <div className="flex items-center mt-2 text-red-600 text-sm">
