@@ -52,7 +52,7 @@ const Results = ({ setCurrentPage, questionnaireData, selectedPlans, togglePlanS
                   )}
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600 font-medium">Term:</span>
-                    <span className="font-bold text-gray-900">{plan.term}</span>
+                    <span className="font-bold text-gray-900">{plan.term} months</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600 font-medium">Down Payment:</span>
