@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Car, User, Lock, AlertCircle } from 'lucide-react';
+import logo from '../utils/toyota_logo.png';
 
 const SignIn = ({ user, setUser, handleSignIn, handleLogout }) => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -33,7 +34,11 @@ const SignIn = ({ user, setUser, handleSignIn, handleLogout }) => {
         <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-3 mb-6">
             <div className="bg-red-600 p-3 rounded-lg">
-              <Car className="w-10 h-10 text-white" />
+              <img
+                src={logo}
+                alt="Toyota Logo"
+            className="w-10 h-auto object-contain"
+              />
             </div>
             <div className="text-left">
               <h1 className="text-3xl font-bold text-white">TOYOTA</h1>
