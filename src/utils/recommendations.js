@@ -1,3 +1,27 @@
+// Importing images
+import toyotaCorolla from './car_images/toyota_corolla.webp';
+import toyotaCamry from './car_images/toyota_camry.webp';
+import toyotaCrown from './car_images/toyota_crown.png';
+import toyotaGRCorolla from './car_images/toyota_gr_corolla.webp';
+import toyotaPrius from './car_images/toyota_prius.jpg'
+import toyotaPriusPlug from './car_images/toyota_prius_plug_in_hybrid.jpg'
+import toyotaMirai from './car_images/toyota_mirai.webp';
+import toyotaCorollaCross from './car_images/toyota_corolla_cross.png';
+import toyotaRAV from './car_images/toyota_RAV4.webp';
+import toyotaHighlander from './car_images/toyota_highlander.webp';
+import toyotaGrandHighlander from './car_images/toyota_grand_highlander.webp';
+import toyotaLandCruiser from './car_images/toyota_land_cruiser.jpg';
+import toyotaSequoia from './car_images/toyota_sequoia.png';
+import toyota4 from './car_images/toyota_4Runner.webp';
+import toyotaBZ from './car_images/toyota_bZ4X.jpg';
+import toyotaCrownSignia from './car_images/toyota_crown_signia.webp';
+import toyotaTacoma from './car_images/toyota_tacoma.webp';
+import toyotaTundra from './car_images/toyota_tundra.webp';
+import toyotaSienna from './car_images/toyota_sienna.jpg'
+import toyotaGR86 from './car_images/toyota_GR86.webp';
+import toyotaGRSupra from './car_images/toyota_GR_supra.png';
+import { getAPRByCreditScore } from './apr';
+
 // Enhanced recommendation engine with complete 2025 Toyota lineup
 export const getRecommendations = (questionnaireData) => {
   const {
@@ -16,10 +40,17 @@ export const getRecommendations = (questionnaireData) => {
       id: 1,
       vehicle: 'Toyota Corolla',
       category: 'cars & minivans',
-      image: 'https://images.unsplash.com/photo-1623869675781-80aa31ad7961?w=600&h=400&fit=crop',
+      image: toyotaCorolla,
       description: 'Available in sedan and hatchback variants with hybrid options',
       financing: {
-        apr: '3.99%',
+        // aprRanges allows dynamic APR selection based on credit score
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '48 months',
         monthlyPayment: 350,
         downPayment: 2000,
@@ -40,10 +71,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 2,
       vehicle: 'Toyota Camry',
       category: 'cars & minivans',
-      image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&h=400&fit=crop',
+      image: toyotaCamry,
       description: 'Midsize sedan with available hybrid powertrains',
       financing: {
-        apr: '4.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 450,
         downPayment: 3000,
@@ -64,10 +101,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 3,
       vehicle: 'Toyota Crown',
       category: 'cars & minivans',
-      image: 'https://images.unsplash.com/photo-1617531653520-bd466f0ca7e9?w=600&h=400&fit=crop',
+      image: toyotaCrown,
       description: 'Premium sedan experience with hybrid powertrains',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 680,
         downPayment: 5000,
@@ -88,10 +131,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 4,
       vehicle: 'Toyota GR Corolla',
       category: 'performance',
-      image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop',
+      image: toyotaGRCorolla,
       description: 'Performance-oriented hatchback with AWD',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 580,
         downPayment: 4000,
@@ -112,10 +161,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 5,
       vehicle: 'Toyota Prius',
       category: 'electrified',
-      image: 'https://images.unsplash.com/photo-1572635182729-0513235de870?w=600&h=400&fit=crop',
+      image: toyotaPrius,
       description: 'Iconic hybrid with improved fuel efficiency',
       financing: {
-        apr: '3.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 380,
         downPayment: 2500,
@@ -136,10 +191,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 6,
       vehicle: 'Toyota Prius Plug-in Hybrid',
       category: 'electrified',
-      image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&h=400&fit=crop',
+      image: toyotaPriusPlug,
       description: 'Electric-only driving range with hybrid efficiency',
       financing: {
-        apr: '3.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 520,
         downPayment: 3500,
@@ -160,10 +221,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 7,
       vehicle: 'Toyota Mirai',
       category: 'electrified',
-      image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&h=400&fit=crop',
+      image: toyotaMirai,
       description: 'Hydrogen fuel cell sedan with zero emissions',
       financing: {
-        apr: '4.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 820,
         downPayment: 6000,
@@ -186,10 +253,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 8,
       vehicle: 'Toyota Corolla Cross',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&h=400&fit=crop',
+      image: toyotaCorollaCross,
       description: 'Compact SUV with both gas and hybrid options',
       financing: {
-        apr: '4.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 380,
         downPayment: 2500,
@@ -210,10 +283,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 9,
       vehicle: 'Toyota RAV4',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=600&h=400&fit=crop',
+      image: toyotaRAV,
       description: 'Available in gas, hybrid, and plug-in hybrid variants',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 490,
         downPayment: 3500,
@@ -234,10 +313,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 10,
       vehicle: 'Toyota Highlander',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop',
+      image: toyotaHighlander,
       description: 'Midsize SUV with gas and hybrid models',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '72 months',
         monthlyPayment: 520,
         downPayment: 4500,
@@ -258,10 +343,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 11,
       vehicle: 'Toyota Grand Highlander',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&h=400&fit=crop',
+      image: toyotaGrandHighlander,
       description: 'Larger three-row SUV introduced for 2025',
       financing: {
-        apr: '5.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '72 months',
         monthlyPayment: 620,
         downPayment: 5500,
@@ -282,10 +373,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 12,
       vehicle: 'Toyota Land Cruiser',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop',
+      image: toyotaLandCruiser,
       description: 'Returns with a hybrid i-FORCE MAX powertrain',
       financing: {
-        apr: '5.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '72 months',
         monthlyPayment: 820,
         downPayment: 7000,
@@ -306,10 +403,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 13,
       vehicle: 'Toyota Sequoia',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&h=400&fit=crop',
+      image: toyotaSequoia,
       description: 'Full-size SUV with hybrid options',
       financing: {
-        apr: '5.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '72 months',
         monthlyPayment: 850,
         downPayment: 7500,
@@ -330,10 +433,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 14,
       vehicle: 'Toyota 4Runner',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop',
+      image: toyota4,
       description: 'Rugged SUV with off-road capabilities',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 680,
         downPayment: 5000,
@@ -354,10 +463,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 15,
       vehicle: 'Toyota bZ4X',
       category: 'electrified',
-      image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&h=400&fit=crop',
+      image: toyotaBZ,
       description: 'All-electric SUV with modern technology',
       financing: {
-        apr: '4.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 720,
         downPayment: 5500,
@@ -378,10 +493,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 16,
       vehicle: 'Toyota Crown Signia',
       category: 'crossovers & suv',
-      image: 'https://images.unsplash.com/photo-1617531653520-bd466f0ca7e9?w=600&h=400&fit=crop',
+      image: toyotaCrownSignia,
       description: 'Luxury crossover SUV with premium features',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 750,
         downPayment: 5500,
@@ -404,10 +525,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 17,
       vehicle: 'Toyota Tacoma',
       category: 'truck',
-      image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&h=400&fit=crop',
+      image: toyotaTacoma,
       description: 'Midsize pickup truck with legendary reliability',
       financing: {
-        apr: '5.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 520,
         downPayment: 4000,
@@ -428,10 +555,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 18,
       vehicle: 'Toyota Tundra',
       category: 'truck',
-      image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&h=400&fit=crop',
+      image: toyotaTundra,
       description: 'Full-size pickup truck with hybrid options',
       financing: {
-        apr: '5.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '72 months',
         monthlyPayment: 580,
         downPayment: 5000,
@@ -454,10 +587,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 19,
       vehicle: 'Toyota Sienna',
       category: 'cars & minivans',
-      image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=600&h=400&fit=crop',
+      image: toyotaSienna,
       description: 'Hybrid-only minivan perfect for families',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 600,
         downPayment: 4500,
@@ -480,10 +619,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 20,
       vehicle: 'Toyota GR86',
       category: 'performance',
-      image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop',
+      image: toyotaGR86,
       description: 'Compact sports coupe with precision handling',
       financing: {
-        apr: '4.99%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 480,
         downPayment: 3500,
@@ -504,10 +649,16 @@ export const getRecommendations = (questionnaireData) => {
       id: 21,
       vehicle: 'Toyota GR Supra',
       category: 'performance',
-      image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop',
+      image: toyotaGRSupra,
       description: 'Performance sports car with thrilling power',
       financing: {
-        apr: '5.49%',
+        aprRanges: [
+          { range: 'superprime', apr: '5.27%' },
+          { range: 'prime', apr: '6.78' },
+          { range: 'nonprime', apr: '9.97%' },
+          { range: 'subprime', apr: '13.38%' },
+          { range: 'deepsubprime', apr: '15.97%'}
+        ],
         term: '60 months',
         monthlyPayment: 730,
         downPayment: 5500,
@@ -528,10 +679,11 @@ export const getRecommendations = (questionnaireData) => {
 
   // Helper functions
   const creditScoreValue = {
-    'excellent': 750,
-    'good': 700,
-    'fair': 650,
-    'poor': 600
+    'superprime': 850,
+    'prime' : 780,
+    'nonprime' : 660,
+    'subprime' : 600,
+    'deepsubprime' : 500
   };
 
   const meetsMinCreditScore = (required, actual) => {
@@ -634,21 +786,74 @@ export const getRecommendations = (questionnaireData) => {
     .slice(0, 3)
     .map(vehicle => {
       const { plan, type } = getPlanForVehicle(vehicle);
-      
+      const computedApr = getAPRByCreditScore(creditScore, vehicle);
+
+      // determine monthly payment and breakdown
+      let monthlyPaymentDisplay = `$${plan.monthlyPayment}`;
+      let aprDisplay = computedApr;
+      let principalDisplay = null;
+      let totalInterestDisplay = null;
+      let totalPaidDisplay = null;
+
+      if (type === 'Financing') {
+        // Use user's loanTerm and downPayment when provided; otherwise fall back to plan values
+        const termMonths = parseInt(questionnaireData.loanTerm || plan.term || '60');
+        const userDown = parseFloat(downPayment) || 0;
+
+        const vehiclePrice = parseFloat(plan.totalCost) || 0;
+        const principal = Math.max(0, vehiclePrice - userDown);
+
+        // parse APR string like '5.27%' to numeric
+        let aprNumber = null;
+        if (typeof computedApr === 'string') {
+          const m = computedApr.match(/([0-9]+\.?[0-9]*)/);
+          if (m) aprNumber = parseFloat(m[1]);
+        } else if (typeof computedApr === 'number') {
+          aprNumber = computedApr;
+        }
+
+        if (principal > 0 && aprNumber !== null && termMonths > 0) {
+          const r = aprNumber / 12 / 100; // monthly rate
+          const n = termMonths;
+          // amortization formula
+          const numerator = r * Math.pow(1 + r, n);
+          const denominator = Math.pow(1 + r, n) - 1;
+          const monthly = denominator !== 0 ? principal * (numerator / denominator) : principal / n;
+
+          const monthlyRounded = Number(monthly.toFixed(2));
+          const totalPayments = monthlyRounded * n;
+          const totalInterest = totalPayments - principal;
+          const totalPaidByBuyer = totalPayments + userDown;
+
+          monthlyPaymentDisplay = `$${monthlyRounded.toFixed(2)}`;
+          aprDisplay = `${aprNumber}%`;
+          principalDisplay = `$${principal.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+          totalInterestDisplay = `$${totalInterest.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+          totalPaidDisplay = `$${totalPaidByBuyer.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+        } else {
+          // fallback to plan monthlyPayment
+          monthlyPaymentDisplay = `$${plan.monthlyPayment}`;
+          if (typeof computedApr === 'string' && !computedApr.includes('%')) aprDisplay = `${computedApr}%`;
+        }
+      }
+
       return {
         id: vehicle.id,
         vehicle: vehicle.vehicle,
         type: type,
         image: vehicle.image,
         description: vehicle.description,
-        monthlyPayment: `$${plan.monthlyPayment}`,
-        downPayment: `$${plan.downPayment.toLocaleString()}`,
-        term: plan.term,
+        monthlyPayment: monthlyPaymentDisplay,
+        downPayment: `$${(parseFloat(downPayment) || plan.downPayment).toLocaleString()}`,
+        term: type === 'Financing' ? `${questionnaireData.loanTerm || plan.term}` : plan.term,
         ...(type === 'Leasing' ? {
           mileageLimit: plan.mileageLimit
         } : {
-          apr: plan.apr,
-          totalCost: `$${plan.totalCost.toLocaleString()}`
+          apr: aprDisplay,
+          totalCost: `$${plan.totalCost.toLocaleString()}`,
+          principal: principalDisplay,
+          totalInterest: totalInterestDisplay,
+          totalPaid: totalPaidDisplay
         })
       };
     });

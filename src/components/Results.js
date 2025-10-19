@@ -39,7 +39,7 @@ const Results = ({ setCurrentPage, questionnaireData, selectedPlans, togglePlanS
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.vehicle}</h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">{plan.description}</p>
                 
-                <div className="space-y-2 mb-5 text-sm bg-gray-50 p-4 rounded-lg">
+                  <div className="space-y-2 mb-5 text-sm bg-gray-50 p-4 rounded-lg">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600 font-medium">Monthly Payment:</span>
                     <span className="font-bold text-gray-900 text-lg">{plan.monthlyPayment}</span>
@@ -58,6 +58,24 @@ const Results = ({ setCurrentPage, questionnaireData, selectedPlans, togglePlanS
                     <span className="text-gray-600 font-medium">Down Payment:</span>
                     <span className="font-bold text-gray-900">{plan.downPayment}</span>
                   </div>
+                  {plan.principal && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium">Principal:</span>
+                      <span className="font-bold text-gray-900">{plan.principal}</span>
+                    </div>
+                  )}
+                  {plan.totalInterest && (
+                    <div className="flex justify-between items-center border-t border-gray-200 pt-2 mt-2">
+                      <span className="text-gray-600 font-medium">Total Interest:</span>
+                      <span className="font-bold text-red-600 text-lg">{plan.totalInterest}</span>
+                    </div>
+                  )}
+                  {plan.totalPaid && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium">Total Paid (incl. down):</span>
+                      <span className="font-bold text-gray-900">{plan.totalPaid}</span>
+                    </div>
+                  )}
                   {plan.totalCost && (
                     <div className="flex justify-between items-center border-t border-gray-200 pt-2 mt-2">
                       <span className="text-gray-600 font-medium">Total Cost:</span>

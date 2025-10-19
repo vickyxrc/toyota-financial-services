@@ -14,6 +14,7 @@ function App() {
     downPayment: '',
     monthlyBudget: '',
     vehicleType: '',
+    loanTerm: '60',
     usage: ''
   });
   const [savedPlans, setSavedPlans] = useState([]);

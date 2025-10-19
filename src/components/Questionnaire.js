@@ -41,43 +41,39 @@ const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireC
                   required
                 >
                   <option value="">Select credit range</option>
-                  <option value="excellent">Excellent (750+)</option>
-                  <option value="good">Good (700-749)</option>
-                  <option value="fair">Fair (650-699)</option>
-                  <option value="poor">Building Credit (under 650)</option>
+                  <option value="superprime">Superprime (780+)</option>
+                  <option value="prime">Prime (661-780)</option>
+                  <option value="nonprime">Nonprime (601-660)</option>
+                  <option value="subprime">Subprime (501-600)</option>
+                  <option value="deepsubprime">Deep Subprime (≤500)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Down Payment</label>
-                <select
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Down Payment ($)</label>
+                <input
+                  type="number"
+                  min="0"
                   value={questionnaireData.downPayment}
                   onChange={(e) => handleQuestionnaireChange('downPayment', e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-red-600 focus:outline-none transition bg-white"
+                  placeholder="Enter down payment amount"
                   required
-                >
-                  <option value="">Select amount</option>
-                  <option value="1000">$0 - $1,000</option>
-                  <option value="3000">$1,000 - $3,000</option>
-                  <option value="5000">$3,000 - $5,000</option>
-                  <option value="10000">$5,000+</option>
-                </select>
+                />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Monthly Budget</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Loan Term (months)</label>
                 <select
-                  value={questionnaireData.monthlyBudget}
-                  onChange={(e) => handleQuestionnaireChange('monthlyBudget', e.target.value)}
+                  value={questionnaireData.loanTerm}
+                  onChange={(e) => handleQuestionnaireChange('loanTerm', e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-red-600 focus:outline-none transition bg-white"
                   required
                 >
-                  <option value="">Select budget</option>
-                  <option value="300">Under $300/month</option>
-                  <option value="400">$300 - $400/month</option>
-                  <option value="500">$400 - $500/month</option>
-                  <option value="600">$500 - $600/month</option>
-                  <option value="700">Over $600/month</option>
+                  <option value="36">36 months</option>
+                  <option value="48">48 months</option>
+                  <option value="60">60 months</option>
+                  <option value="72">72 months</option>
                 </select>
               </div>
 
