@@ -51,12 +51,8 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '48 months',
-        monthlyPayment: 350,
-        downPayment: 2000,
-        totalCost: 19800,
-        minCreditScore: 'fair',
-        minIncome: 30000
+        totalCost: 22725,
+        // minIncome: Math.round(totalCost * 0.45)
       },
       leasing: {
         monthlyPayment: 280,
@@ -81,12 +77,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 450,
-        downPayment: 3000,
-        totalCost: 30000,
-        minCreditScore: 'fair',
-        minIncome: 40000
+        totalCost: 29000,
       },
       leasing: {
         monthlyPayment: 350,
@@ -111,12 +102,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 680,
-        downPayment: 5000,
-        totalCost: 45800,
-        minCreditScore: 'good',
-        minIncome: 75000
+        totalCost: 41440,
       },
       leasing: {
         monthlyPayment: 550,
@@ -141,12 +127,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 580,
-        downPayment: 4000,
-        totalCost: 38800,
-        minCreditScore: 'good',
-        minIncome: 65000
+        totalCost: 39160,
       },
       leasing: {
         monthlyPayment: 480,
@@ -171,12 +152,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 380,
-        downPayment: 2500,
-        totalCost: 25300,
-        minCreditScore: 'good',
-        minIncome: 40000
+        totalCost: 28550,
       },
       leasing: {
         monthlyPayment: 320,
@@ -201,12 +177,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 520,
-        downPayment: 3500,
-        totalCost: 34700,
-        minCreditScore: 'good',
-        minIncome: 55000
+        totalCost: 33775,
       },
       leasing: {
         monthlyPayment: 420,
@@ -231,12 +202,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 820,
-        downPayment: 6000,
-        totalCost: 55200,
-        minCreditScore: 'excellent',
-        minIncome: 90000
+        totalCost: 52990,
       },
       leasing: {
         monthlyPayment: 650,
@@ -263,12 +229,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 380,
-        downPayment: 2500,
         totalCost: 25300,
-        minCreditScore: 'fair',
-        minIncome: 38000
       },
       leasing: {
         monthlyPayment: 310,
@@ -293,12 +254,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 490,
-        downPayment: 3500,
         totalCost: 32700,
-        minCreditScore: 'fair',
-        minIncome: 50000
       },
       leasing: {
         monthlyPayment: 380,
@@ -323,12 +279,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '72 months',
-        monthlyPayment: 520,
-        downPayment: 4500,
         totalCost: 42000,
-        minCreditScore: 'good',
-        minIncome: 70000
       },
       leasing: {
         monthlyPayment: 450,
@@ -353,12 +304,8 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '72 months',
-        monthlyPayment: 620,
-        downPayment: 5500,
         totalCost: 49600,
-        minCreditScore: 'good',
-        minIncome: 80000
+        // minIncome: 80000
       },
       leasing: {
         monthlyPayment: 520,
@@ -383,12 +330,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '72 months',
-        monthlyPayment: 820,
-        downPayment: 7000,
         totalCost: 66040,
-        minCreditScore: 'excellent',
-        minIncome: 100000
       },
       leasing: {
         monthlyPayment: 680,
@@ -413,12 +355,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '72 months',
-        monthlyPayment: 850,
-        downPayment: 7500,
         totalCost: 68200,
-        minCreditScore: 'excellent',
-        minIncome: 105000
       },
       leasing: {
         monthlyPayment: 720,
@@ -443,12 +380,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 680,
-        downPayment: 5000,
         totalCost: 45800,
-        minCreditScore: 'good',
-        minIncome: 75000
       },
       leasing: {
         monthlyPayment: 550,
@@ -473,12 +405,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 720,
-        downPayment: 5500,
         totalCost: 48700,
-        minCreditScore: 'good',
-        minIncome: 80000
       },
       leasing: {
         monthlyPayment: 580,
@@ -503,12 +430,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 750,
-        downPayment: 5500,
         totalCost: 50500,
-        minCreditScore: 'excellent',
-        minIncome: 85000
       },
       leasing: {
         monthlyPayment: 620,
@@ -535,12 +457,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 520,
-        downPayment: 4000,
         totalCost: 35200,
-        minCreditScore: 'fair',
-        minIncome: 55000
       },
       leasing: {
         monthlyPayment: 420,
@@ -565,12 +482,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '72 months',
-        monthlyPayment: 580,
-        downPayment: 5000,
         totalCost: 46760,
-        minCreditScore: 'good',
-        minIncome: 70000
       },
       leasing: {
         monthlyPayment: 520,
@@ -597,12 +509,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 600,
-        downPayment: 4500,
         totalCost: 40600,
-        minCreditScore: 'good',
-        minIncome: 70000
       },
       leasing: {
         monthlyPayment: 480,
@@ -629,12 +536,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 480,
-        downPayment: 3500,
         totalCost: 31800,
-        minCreditScore: 'good',
-        minIncome: 60000
       },
       leasing: {
         monthlyPayment: 380,
@@ -659,12 +561,7 @@ export const getRecommendations = (questionnaireData) => {
           { range: 'subprime', apr: '13.38%' },
           { range: 'deepsubprime', apr: '15.97%'}
         ],
-        term: '60 months',
-        monthlyPayment: 730,
-        downPayment: 5500,
         totalCost: 49300,
-        minCreditScore: 'excellent',
-        minIncome: 85000
       },
       leasing: {
         monthlyPayment: 600,
@@ -694,6 +591,15 @@ export const getRecommendations = (questionnaireData) => {
   const numDownPayment = parseInt(downPayment);
   const numMonthlyBudget = parseInt(monthlyBudget);
 
+  // Helper to get a plan's minimum income requirement. If not provided, derive from totalCost.
+  const getPlanMinIncome = (plan) => {
+    if (!plan) return 0;
+    if (typeof plan.minIncome === 'number') return plan.minIncome;
+    const cost = typeof plan.totalCost === 'number' ? plan.totalCost : parseFloat(plan.totalCost);
+    if (!isNaN(cost) && cost > 0) return Math.round(cost * 0.75);
+    return 0;
+  };
+
   // Determine which plan type to use
   const getPlanForVehicle = (vehicle) => {
     if (financingPreference === 'finance') {
@@ -721,9 +627,10 @@ export const getRecommendations = (questionnaireData) => {
     const matchesType = vehicleType === 'no preference' || vehicle.category === vehicleType;
     const { plan } = getPlanForVehicle(vehicle);
 
-    const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget;
-    const affordableDown = plan.downPayment <= numDownPayment;
-    const meetsIncome = numIncome >= plan.minIncome;
+  const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget;
+  const affordableDown = plan.downPayment <= numDownPayment;
+  const minIncomeReq = getPlanMinIncome(plan);
+  const meetsIncome = numIncome >= minIncomeReq;
     const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
 
     return matchesType && affordableMonthly && affordableDown && meetsIncome && meetsCredit;
@@ -735,8 +642,9 @@ export const getRecommendations = (questionnaireData) => {
       const matchesType = vehicleType === 'no preference' || vehicle.category === vehicleType;
       const { plan } = getPlanForVehicle(vehicle);
       
-      const affordableDown = plan.downPayment <= numDownPayment;
-      const meetsIncome = numIncome >= plan.minIncome;
+  const affordableDown = plan.downPayment <= numDownPayment;
+  const minIncomeReq = getPlanMinIncome(plan);
+  const meetsIncome = numIncome >= minIncomeReq;
       const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
       const nearBudget = plan.monthlyPayment <= numMonthlyBudget * 1.2;
 
@@ -749,9 +657,10 @@ export const getRecommendations = (questionnaireData) => {
     eligibleVehicles = allVehicles.filter(vehicle => {
       const { plan } = getPlanForVehicle(vehicle);
       
-      const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget * 1.2;
-      const affordableDown = plan.downPayment <= numDownPayment;
-      const meetsIncome = numIncome >= plan.minIncome;
+  const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget * 1.2;
+  const affordableDown = plan.downPayment <= numDownPayment;
+  const minIncomeReq = getPlanMinIncome(plan);
+  const meetsIncome = numIncome >= minIncomeReq;
       const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
 
       return affordableMonthly && affordableDown && meetsIncome && meetsCredit;
