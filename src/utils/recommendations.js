@@ -600,6 +600,42 @@ export const getRecommendations = (questionnaireData) => {
     return 0;
   };
 
+  // Compute lease monthly payment with provided formula and rounding
+  const computeLeaseMonthly = (vehicle, plan) => {
+    const termMonths = parseInt(questionnaireData.loanTerm || (plan && plan.term) || '36');
+    const termFactors = {
+      36: 0.025,
+      48: 0.020,
+      60: 0.018,
+      72: 0.016
+    };
+
+    const creditFactors = {
+      'superprime': 0.85,
+      'prime': 1.0,
+      'nonprime': 1.25,
+      'subprime': 1.6,
+      'deepsubprime': 2.2
+    };
+
+    // Leasing plans don't include totalCost; fall back to vehicle.financing.totalCost when needed
+    const vehiclePrice = (plan && typeof plan.totalCost === 'number') ? plan.totalCost
+      : (vehicle && vehicle.financing && typeof vehicle.financing.totalCost === 'number') ? vehicle.financing.totalCost
+      : parseFloat((plan && plan.totalCost) || (vehicle && vehicle.financing && vehicle.financing.totalCost)) || 0;
+    const userDown = (() => {
+      const v = parseFloat(downPayment);
+      return !isNaN(v) ? v : (plan && typeof plan.downPayment === 'number' ? plan.downPayment : parseFloat((plan && plan.downPayment) || 0) || 0);
+    })();
+
+    const termFactor = termFactors[termMonths] || termFactors[60];
+  const creditFactor = creditFactors[creditScore] || 1.0;
+
+  const remaining = Math.max(0, vehiclePrice - userDown);
+    const monthly = remaining * termFactor * creditFactor;
+
+    return Math.round(monthly);
+  };
+
   // Determine which plan type to use
   const getPlanForVehicle = (vehicle) => {
     if (financingPreference === 'finance') {
@@ -625,12 +661,13 @@ export const getRecommendations = (questionnaireData) => {
   // Filter eligible vehicles
   let eligibleVehicles = allVehicles.filter(vehicle => {
     const matchesType = vehicleType === 'no preference' || vehicle.category === vehicleType;
-    const { plan } = getPlanForVehicle(vehicle);
+    const { plan, type } = getPlanForVehicle(vehicle);
 
-  const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget;
-  const affordableDown = plan.downPayment <= numDownPayment;
-  const minIncomeReq = getPlanMinIncome(plan);
-  const meetsIncome = numIncome >= minIncomeReq;
+  const monthlyForEligibility = type === 'Leasing' ? computeLeaseMonthly(vehicle, plan) : (plan.monthlyPayment || 0);
+    const affordableMonthly = monthlyForEligibility <= numMonthlyBudget;
+    const affordableDown = (plan.downPayment || 0) <= numDownPayment;
+    const minIncomeReq = getPlanMinIncome(plan);
+    const meetsIncome = numIncome >= minIncomeReq;
     const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
 
     return matchesType && affordableMonthly && affordableDown && meetsIncome && meetsCredit;
@@ -640,13 +677,14 @@ export const getRecommendations = (questionnaireData) => {
   if (eligibleVehicles.length === 0) {
     eligibleVehicles = allVehicles.filter(vehicle => {
       const matchesType = vehicleType === 'no preference' || vehicle.category === vehicleType;
-      const { plan } = getPlanForVehicle(vehicle);
-      
-  const affordableDown = plan.downPayment <= numDownPayment;
-  const minIncomeReq = getPlanMinIncome(plan);
-  const meetsIncome = numIncome >= minIncomeReq;
+      const { plan, type } = getPlanForVehicle(vehicle);
+
+  const monthlyForEligibility = type === 'Leasing' ? computeLeaseMonthly(vehicle, plan) : (plan.monthlyPayment || 0);
+      const affordableDown = (plan.downPayment || 0) <= numDownPayment;
+      const minIncomeReq = getPlanMinIncome(plan);
+      const meetsIncome = numIncome >= minIncomeReq;
       const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
-      const nearBudget = plan.monthlyPayment <= numMonthlyBudget * 1.2;
+      const nearBudget = monthlyForEligibility <= numMonthlyBudget * 1.2;
 
       return matchesType && nearBudget && affordableDown && meetsIncome && meetsCredit;
     });
@@ -655,12 +693,13 @@ export const getRecommendations = (questionnaireData) => {
   // Fallback: ignore vehicle type
   if (eligibleVehicles.length === 0) {
     eligibleVehicles = allVehicles.filter(vehicle => {
-      const { plan } = getPlanForVehicle(vehicle);
-      
-  const affordableMonthly = plan.monthlyPayment <= numMonthlyBudget * 1.2;
-  const affordableDown = plan.downPayment <= numDownPayment;
-  const minIncomeReq = getPlanMinIncome(plan);
-  const meetsIncome = numIncome >= minIncomeReq;
+      const { plan, type } = getPlanForVehicle(vehicle);
+
+  const monthlyForEligibility = type === 'Leasing' ? computeLeaseMonthly(vehicle, plan) : (plan.monthlyPayment || 0);
+      const affordableMonthly = monthlyForEligibility <= numMonthlyBudget * 1.2;
+      const affordableDown = (plan.downPayment || 0) <= numDownPayment;
+      const minIncomeReq = getPlanMinIncome(plan);
+      const meetsIncome = numIncome >= minIncomeReq;
       const meetsCredit = meetsMinCreditScore(plan.minCreditScore, creditScore);
 
       return affordableMonthly && affordableDown && meetsIncome && meetsCredit;
@@ -679,9 +718,10 @@ export const getRecommendations = (questionnaireData) => {
   // Score vehicles
   const scoredVehicles = eligibleVehicles.map(vehicle => {
     let score = 0;
-    const { plan } = getPlanForVehicle(vehicle);
-    
-    const budgetDiff = Math.abs(plan.monthlyPayment - numMonthlyBudget);
+    const { plan, type } = getPlanForVehicle(vehicle);
+
+  const monthlyForScoring = type === 'Leasing' ? computeLeaseMonthly(vehicle, plan) : (plan.monthlyPayment || 0);
+    const budgetDiff = Math.abs(monthlyForScoring - numMonthlyBudget);
     score += Math.max(0, 100 - budgetDiff);
     
     if (vehicle.category === vehicleType) score += 50;
@@ -744,6 +784,12 @@ export const getRecommendations = (questionnaireData) => {
           monthlyPaymentDisplay = `$${plan.monthlyPayment}`;
           if (typeof computedApr === 'string' && !computedApr.includes('%')) aprDisplay = `${computedApr}%`;
         }
+      }
+
+      // Leasing monthly calculation using user inputs: monthlyPayment = (carPrice - downPayment) * termFactor * creditFactor
+      if (type === 'Leasing') {
+        const leaseRounded = computeLeaseMonthly(vehicle, plan);
+        monthlyPaymentDisplay = `$${leaseRounded.toLocaleString()}`;
       }
 
       return {

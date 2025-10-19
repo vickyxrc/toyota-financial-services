@@ -21,7 +21,8 @@ function App() {
     downPayment: '',
     monthlyBudget: '',
     vehicleType: '',
-    financingPreference: ''
+    financingPreference: '',
+    loanTerm: '60'
   });
 
   const [selectedPlans, setSelectedPlans] = useState([]);
@@ -121,9 +122,11 @@ function App() {
   };
 
   const handleQuestionnaireChange = (field, value) => {
+    // Normalize numeric fields to numbers where appropriate
+    const numericFields = ['income', 'downPayment', 'monthlyBudget', 'loanTerm'];
     setQuestionnaireData(prev => ({
       ...prev,
-      [field]: value
+      [field]: numericFields.includes(field) ? (value === '' ? '' : String(value)) : value
     }));
   };
 

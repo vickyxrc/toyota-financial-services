@@ -13,7 +13,27 @@ const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireC
         </div>
 
         <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
-          <form onSubmit={handleQuestionnaireSubmit} className="space-y-6">
+          <form onSubmit={(e) => {
+              e.preventDefault();
+              // Basic validation
+              const income = questionnaireData.income;
+              const credit = questionnaireData.creditScore;
+              const down = questionnaireData.downPayment;
+              const loanTerm = questionnaireData.loanTerm;
+              const vehicleType = questionnaireData.vehicleType;
+              const financingPreference = questionnaireData.financingPreference;
+
+              const allowedTerms = ['36','48','60','72'];
+
+              if (!income || isNaN(parseFloat(income))) { alert('Please enter a valid annual income.'); return; }
+              if (!credit) { alert('Please select a credit score range.'); return; }
+              if (down === '' || isNaN(parseFloat(down)) || parseFloat(down) < 0) { alert('Please enter a valid down payment (0 or greater).'); return; }
+              if (!allowedTerms.includes(String(loanTerm))) { alert('Please select a valid loan term.'); return; }
+              if (!vehicleType) { alert('Please select a vehicle type preference.'); return; }
+              if (!financingPreference) { alert('Please select a financing preference.'); return; }
+
+              handleQuestionnaireSubmit(e);
+            }} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Annual Income</label>
