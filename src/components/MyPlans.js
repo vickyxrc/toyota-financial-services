@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Trash2 } from 'lucide-react';
 import Navigation from './Navigation';
 
-const MyPlans = ({ setCurrentPage, savedPlans }) => {
+const MyPlans = ({ setCurrentPage, savedPlans, handleLogout, removePlan }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} />
+      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} handleLogout={handleLogout} removePlan={removePlan}/>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
@@ -43,6 +43,13 @@ const MyPlans = ({ setCurrentPage, savedPlans }) => {
                   <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {plan.type}
                   </div>
+                  <button
+                    onClick={() => removePlan(plan.id)}
+                    className="absolute top-3 left-3 bg-white/90 hover:bg-red-600 text-gray-700 hover:text-white p-2 rounded-full transition shadow-lg group"
+                    title="Remove plan"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
                 </div>
                 
                 <div className="p-6">

@@ -1,7 +1,32 @@
-import React from 'react';
-import { Car, User, Lock } from 'lucide-react';
+import React, { useState } from 'react';
+import { Car, User, Lock, AlertCircle } from 'lucide-react';
 
-const SignIn = ({ user, setUser, handleSignIn }) => {
+const SignIn = ({ user, setUser, handleSignIn, handleLogout }) => {
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validate password for sign up
+    if (isSignUp) {
+      if (user.password.length < 8) {
+        setPasswordError('Password must be at least 8 characters');
+        return;
+      }
+      setPasswordError('');
+    }
+    
+    handleSignIn(e, isSignUp);
+  };
+
+  const handlePasswordChange = (e) => {
+    setUser({...user, password: e.target.value});
+    if (passwordError && e.target.value.length >= 8) {
+      setPasswordError('');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -15,12 +40,16 @@ const SignIn = ({ user, setUser, handleSignIn }) => {
               <p className="text-red-600 text-sm font-semibold">Financial Services</p>
             </div>
           </div>
-          <p className="text-gray-400 text-lg">Sign in to find your perfect financing plan</p>
+          <p className="text-gray-400 text-lg">
+            {isSignUp ? 'Create your account' : 'Sign in to find your perfect financing plan'}
+          </p>
         </div>
         
         <div className="bg-white rounded-2xl shadow-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Welcome Back</h2>
-          <form onSubmit={handleSignIn} className="space-y-6">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            {isSignUp ? 'Create Account' : 'Welcome Back'}
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
               <div className="relative">
@@ -43,24 +72,45 @@ const SignIn = ({ user, setUser, handleSignIn }) => {
                 <input
                   type="password"
                   value={user.password}
-                  onChange={(e) => setUser({...user, password: e.target.value})}
-                  className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-red-600 focus:outline-none transition"
+                  onChange={handlePasswordChange}
+                  className={`w-full pl-10 pr-4 py-3 border-2 rounded-lg focus:outline-none transition ${
+                    passwordError ? 'border-red-500 focus:border-red-600' : 'border-gray-200 focus:border-red-600'
+                  }`}
                   placeholder="••••••••"
                   required
+                  minLength={isSignUp ? 8 : undefined}
                 />
               </div>
+              {passwordError && (
+                <div className="flex items-center mt-2 text-red-600 text-sm">
+                  <AlertCircle className="w-4 h-4 mr-1" />
+                  <span>{passwordError}</span>
+                </div>
+              )}
+              {isSignUp && !passwordError && (
+                <p className="text-gray-500 text-xs mt-2">Must be at least 8 characters</p>
+              )}
             </div>
 
             <button
               type="submit"
               className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition transform hover:scale-105 shadow-lg"
             >
-              Sign In
+              {isSignUp ? 'Create Account' : 'Sign In'}
             </button>
           </form>
           
           <p className="text-center text-gray-600 text-sm mt-4">
-            Don't have an account? <span className="text-red-600 font-semibold cursor-pointer hover:underline">Sign up</span>
+            {isSignUp ? 'Already have an account? ' : "Don't have an account? "}
+            <span 
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setPasswordError('');
+              }}
+              className="text-red-600 font-semibold cursor-pointer hover:underline"
+            >
+              {isSignUp ? 'Sign in' : 'Sign up'}
+            </span>
           </p>
         </div>
       </div>

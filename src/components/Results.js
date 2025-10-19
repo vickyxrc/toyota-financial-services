@@ -3,12 +3,12 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import Navigation from './Navigation';
 import { getRecommendations } from '../utils/recommendations';
 
-const Results = ({ setCurrentPage, questionnaireData, selectedPlans, togglePlanSelection, savePlans }) => {
+const Results = ({ setCurrentPage, questionnaireData, selectedPlans, togglePlanSelection, savePlans, handleLogout }) => {
   const recommendations = getRecommendations(questionnaireData);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} />
+      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} handleLogout={handleLogout} />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-10">

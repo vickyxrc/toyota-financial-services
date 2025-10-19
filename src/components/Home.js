@@ -2,10 +2,10 @@ import React from 'react';
 import { DollarSign, TrendingUp, Car, ArrowRight } from 'lucide-react';
 import Navigation from './Navigation';
 
-const Home = ({ setCurrentPage, savedPlans }) => {
+const Home = ({ setCurrentPage, savedPlans, handleLogout }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <Navigation setCurrentPage={setCurrentPage} savedPlans={savedPlans} />
+      <Navigation setCurrentPage={setCurrentPage} savedPlans={savedPlans} handleLogout={handleLogout} />
 
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">

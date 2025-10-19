@@ -1,10 +1,10 @@
 import React from 'react';
 import Navigation from './Navigation';
 
-const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireChange, handleQuestionnaireSubmit }) => {
+const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireChange, handleQuestionnaireSubmit, handleLogout }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} />
+      <Navigation setCurrentPage={setCurrentPage} showMyPlans={false} handleLogout={handleLogout} />
 
       <div className="max-w-3xl mx-auto px-6 py-12">
         <div className="text-center mb-10">
@@ -41,11 +41,11 @@ const Questionnaire = ({ setCurrentPage, questionnaireData, handleQuestionnaireC
                   required
                 >
                   <option value="">Select credit range</option>
-                  <option value="superprime">Superprime (780+)</option>
-                  <option value="prime">Prime (661-780)</option>
-                  <option value="nonprime">Nonprime (601-660)</option>
-                  <option value="subprime">Subprime (501-600)</option>
-                  <option value="deepsubprime">Deep Subprime (≤500)</option>
+                  <option value="superprime">780+</option>
+                  <option value="prime">661-780</option>
+                  <option value="nonprime">601-660</option>
+                  <option value="subprime">501-600</option>
+                  <option value="deepsubprime">≤500</option>
                 </select>
               </div>
 
